@@ -1,4 +1,4 @@
-- form_for([@user, section]) do |f|
+- form_for([@user, @section]) do |f|
   = f.error_messages
   %p
     = f.label :name
@@ -7,6 +7,6 @@
   %p
     = f.label :children_of
     %br
-    = f.select :children_of, nested_set_options_for_select(current_user.sections, { :exclude => section })
+    = f.select :children_of, @user.sections.delete_if { |o| o.id == @section.id }.collect { |a| [a.name, a.id] }
   %p
     = f.submit "Submit"
