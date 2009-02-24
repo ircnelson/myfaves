@@ -5,5 +5,5 @@
       =h section.name
     = link_to 'Favorites', section_favorites_path(section)
     - unless section.root?
-      = link_to 'Edit', edit_user_section_path(@user, section)
-      = link_to 'Destroy', [@user, section], :confirm => 'Are you sure?', :method => :delete
+      = link_to 'Edit', edit_section_path(section)
+      = link_to 'Destroy', section, :confirm => 'Are you sure?', :method => :delete
