@@ -1,0 +1,8 @@
+%h2 Listing favorites
+- if !@favorites.empty?
+  .favorites
+    = render :partial => "favorite", :collection => @favorites
+  = will_paginate(@favorites)
+- else
+  %p There are no favorites to show yet.
+= link_to 'New favorite', new_section_favorite_path(@section)

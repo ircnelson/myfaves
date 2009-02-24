@@ -1,0 +1,8 @@
+%h2 Listing sections
+- if !@sections.empty?
+  .sections
+    = render :partial => "section", :collection => @sections
+  = will_paginate(@sections)
+- else
+  %p There are no sections to show yet.
+= link_to 'New section', new_section_path

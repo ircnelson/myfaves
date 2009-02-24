@@ -1,0 +1,26 @@
+%h2= nested_set_full_outline(@section, :controller => 'sections')
+
+- form_for([@section, favorite]) do |f|
+  = f.error_messages
+  %p
+    = f.label :name
+    %br
+    = f.text_field :name
+  %p
+    = f.label :description
+    %br
+    = f.text_field :description
+  %p
+    = f.label :url
+    %br
+    = f.text_field :url
+  %p
+    = f.label :state
+    %br
+    = f.check_box :state
+  %p
+    = f.label :section_id
+    %br/
+    = f.select :section_id, current_user.sections.collect { |s| [s.name, s.id] }
+  %p
+    = f.submit "Submit"

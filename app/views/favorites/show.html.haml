@@ -1,0 +1,21 @@
+%h2= "Favorite \"#{@favorite.to_param}\""
+- content_tag_for :div, @favorite do
+  %ul
+    %li
+      %strong Name:
+      =h @favorite.name
+    %li
+      %strong Description:
+      =h @favorite.description
+    %li
+      %strong Url:
+      =h @favorite.url
+    %li
+      %strong State:
+      =h @favorite.state
+    %li
+      %strong Section:
+      =h @favorite.section
+%ul
+  %li= link_to 'Edit', edit_section_favorite_path(@section, @favorite)
+  %li= link_to 'Back', section_favorites_path(@section)

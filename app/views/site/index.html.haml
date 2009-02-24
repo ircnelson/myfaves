@@ -1,0 +1,10 @@
+%h1= t('site.title')
+
+- @sections.each do |section|
+  %h3= section.name
+  - unless section.favorites.blank?
+    %ul
+      - section.favorites.each do |faves|
+        
+        %li=favorite_link_to(faves)
+    

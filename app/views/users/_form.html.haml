@@ -1,0 +1,18 @@
+- form_for(@user) do |u|
+  = u.error_messages
+  %p
+    = u.label :name
+    %br/
+    = u.text_field :name
+  %p
+    = u.label :email
+    %br/
+    = u.text_field :email
+  - if @user.new_record?
+    %p
+      = u.label :password
+      %br/
+      = u.password_field :password
+      = u.password_field :password_confirmation
+  %p
+    = u.submit btn_submit

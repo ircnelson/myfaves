@@ -1,0 +1,8 @@
+- form_tag login_path, :method => :post do
+  %dl
+    %dt= label_tag 'login'
+    %dd= text_field_tag :login
+    %dt= label_tag 'password'
+    %dd= password_field_tag :password
+  %p
+    = submit_tag 'log in'

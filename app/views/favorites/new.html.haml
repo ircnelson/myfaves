@@ -1,0 +1,4 @@
+%h2 New favorite
+= render "form", :favorite => @favorite
+%ul
+  %li= link_to 'Back', section_favorites_path(@section)

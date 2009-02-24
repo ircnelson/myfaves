@@ -1,0 +1,21 @@
+- content_tag_for :div, favorite do
+  %ul
+    - unless favorite.name.blank?
+      %li
+        %strong Name:
+        =h favorite.name
+    - unless favorite.description.blank?  
+      %li
+        %strong Description:
+        =h favorite.description
+    %li
+      %strong Url:
+      =link_to favorite.url
+    %li
+      %strong State:
+      = favorite_state(favorite.state)
+    %li
+      %strong Section:
+      =h favorite.section.name
+    = link_to 'Edit', edit_section_favorite_path(favorite.section, favorite)
+    = link_to 'Destroy', [favorite.section, favorite], :confirm => 'Are you sure?', :method => :delete
