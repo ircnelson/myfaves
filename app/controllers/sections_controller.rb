@@ -3,8 +3,6 @@ class SectionsController < ApplicationController
 	before_filter :login_required
   before_filter :find_section
 
-  SECTIONS_PER_PAGE = 20
-
   def create
     @section = @user.sections.build(params[:section])
     respond_to do |format|
@@ -34,7 +32,7 @@ class SectionsController < ApplicationController
   end
 
   def index
-    @sections = @user.sections.paginate(:page => params[:page], :per_page => SECTIONS_PER_PAGE)
+    @sections = @user.sections.all
     respond_to do |format|
       format.html
       format.xml  { render :xml => @sections }

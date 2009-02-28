@@ -5,7 +5,6 @@ hr.clear {
 	padding: 0;
 }
 .bubble {
-	position: relative;
 	padding: 8px 5px;
 	line-height: 140%;
 	clear: both;
@@ -26,7 +25,7 @@ hr.clear {
 #bubbles .control a:hover {
 	text-decoration: underline;
 }
-#bubbles .control a.edit, #bubbles .control a.delete, #bubbles .control a.favorite {
+#bubbles .control a.edit, #bubbles .control a.delete, #bubbles .control a.favorite, #bubbles .control a.new_favorite {
 	text-indent: -9999em;
 	width: 16px;
 	height: 16px;
@@ -45,6 +44,10 @@ hr.clear {
 
 #bubbles .control a.favorite {
 	background: transparent url("/images/icons/heart.png") no-repeat;
+}
+
+#bubbles .control a.new_favorite {
+	background: transparent url("/images/icons/heart_add.png") no-repeat;
 }
 
 .bubble span {

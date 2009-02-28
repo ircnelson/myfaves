@@ -34,6 +34,9 @@ module ApplicationHelper
 				favorite_pluralize = pluralize(favorite_count, "Favorite") unless favorite_count.blank?
 				name ||= favorite_pluralize
 				link_to(name, section_favorites_path(object), :class => 'favorite', :title => name)
+			when 'new_favorite'
+				name ||= 'Add Favorite'
+				link_to(name, new_section_favorite_path(object), :class => 'new_favorite', :title => name)
 			when 'edit'
 				name ||= 'Edit'
 				link_to(name, edit_section_path(object), :class => 'edit', :title => name)
