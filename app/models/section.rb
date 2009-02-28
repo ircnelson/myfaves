@@ -1,7 +1,7 @@
 class Section < ActiveRecord::Base
 	acts_as_nested_set
 	include NestedSetList
-	has_many :favorites
+	has_many :favorites, :dependent => :destroy
 	belongs_to :user
 	after_save :check_if_exists_parent_and_move
 	validates_presence_of :name

@@ -1,0 +1,2 @@
+page.replace_html "#section_#{@favorite.section_id}", :partial => "sections/favorites"
+page["#section_#{@favorite.section_id}"].visual_effect :highlight

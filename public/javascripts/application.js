@@ -9,15 +9,20 @@ jQuery.expr[':'].regex = function(elem, index, match) {
 	return regex.test(jQuery(elem)[attr.method](attr.property));
 }
 $(document).ready(function() {
-	var $result = $("#results p")
+	$('.accordion').accordion({
+		header: "h3",
+		icons: { 'header': 'ui-icon-plus', 'headerSelected': 'ui-icon-minus' },
+		autoHeight: true
+	});
+	$('.accordion h3').css({cursor: 'pointer'});
 	$('.bubble')
+		.corners()
 		.mouseover(function(e) {
 			var bubble = $(e.target);
 			bubble = bubble.is('.bubble') ? bubble : bubble.parent();
 			bubble = bubble.is('.control') ? bubble.parent() : bubble;
 			bubble.addClass("bubbled");
 			$("#ctrl_" + bubble.attr("id").split("_")[1]).css({visibility: "visible"})
-			$result.text($(e.target))
 		})
 		.mouseout(function(e) {
 			var bubble = $(e.target);
@@ -29,6 +34,8 @@ $(document).ready(function() {
 		var pos = $(el).attr("level");
 		$(el).css({'margin-left': pos + 'em'});
 	});
-
-	$('.bubble').corners();
 });
+
+jQuery.ajaxSetup({ 
+  'beforeSend': function(xhr) {xhr.setRequestHeader("Accept", "text/javascript")}
+})

@@ -1,6 +1,7 @@
 class SiteController < ApplicationController
   def index
-		@sections = Section.all
+		@favorites = Favorite.active.all
+		@section = current_user.sections.build
   end
 
 end

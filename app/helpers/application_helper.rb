@@ -22,7 +22,7 @@ module ApplicationHelper
 	end
 	
 	def favorite_link_to(object)
-		name = (object.name.blank? ? truncate(object.url, 30) : object.name)
+		name = (object.name.blank? ? truncate(object.url, 30) : object.name).gsub("www\.", '').gsub("http://", '')
 		url ||= object.url
 		link_to(name, url)
 	end
@@ -60,7 +60,7 @@ module ApplicationHelper
 		li = ''
 		collection.collect do |item|
 			next if item.parent_id != parent_id
-			li += render(:partial => "section", :locals => { :section => item })
+			li += render(:partial => "sections/bubble", :locals => { :section => item })
 			li += bubbles_display(item.all_children, item.id) unless item.children.blank?
 		end
 		li

@@ -4,14 +4,9 @@
 %h2 Listing sections
 - if !@sections.empty?
   #sections
-    #bubbles
+    - content_tag(:div, :id => "bubbles") do
       = bubbles_display(@sections)
 - else
   %p There are no sections to show yet.
 %hr.clear
 = link_to 'New section', new_section_path
-
-%hr.clear
-
-#results
-  %p

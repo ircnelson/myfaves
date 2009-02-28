@@ -1,8 +1,7 @@
 %h1= t('site.title')
 
-- (@sections - Array(@sections.first)).each do |section|
-  %h3= section.name
-  - unless section.favorites.blank?
-    %ul
-      - section.favorites.each do |faves|
-        %li=favorite_link_to(faves)
+.accordion
+  - @favorites.group_by(&:section).sort.each do |section, @favorites|
+    %h3= link_to section.name, section
+    - div_for(section) do  
+      = render :partial => "sections/favorites"

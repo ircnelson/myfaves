@@ -10,6 +10,7 @@ class FavoritesController < ApplicationController
       if @favorite.save
         flash[:notice] = 'Favorite was successfully created.'
         format.html { redirect_to(@section, @favorite) }
+        format.js
         format.xml  { render :xml => @favorite, :status => :created, :location => @favorite }
       else
         format.html { render :action => "new" }
@@ -74,7 +75,7 @@ class FavoritesController < ApplicationController
   private
 
   def find_favorite
-  	@section = Section.find(params[:section_id])
+  	@section = Section.find(params[:section_id]) if params[:section_id]
     @favorite = @section.favorites.find(params[:id]) if params[:id]
   end
 

@@ -9,6 +9,7 @@ class SectionsController < ApplicationController
       if @section.save
         flash[:notice] = 'Section was successfully created.'
         format.html { redirect_to @section }
+        format.js if request.xhr?
         format.xml  { render :xml => @section, :status => :created, :location => @section }
       else
         format.html { render :action => "new" }
