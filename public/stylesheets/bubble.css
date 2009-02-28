@@ -1,0 +1,62 @@
+hr.clear {
+	clear: both;
+	visibility: hidden;
+	margin: 0;
+	padding: 0;
+}
+.bubble {
+	position: relative;
+	padding: 8px 5px;
+	line-height: 140%;
+	clear: both;
+	font-size: 14px;
+}
+#bubbles .control a {
+	display: block;
+	float: left;
+	font-size: 12px;
+	margin: 0 4px;
+	color: #fff;
+	text-decoration: none;
+	background: #7f8ca0;
+	padding: 0 2px 0 0;
+	border: 1px solid #fff;
+}
+
+#bubbles .control a:hover {
+	text-decoration: underline;
+}
+#bubbles .control a.edit, #bubbles .control a.delete, #bubbles .control a.favorite {
+	text-indent: -9999em;
+	width: 16px;
+	height: 16px;
+	margin-top: 2px;
+	border: none;
+}
+
+#bubbles .control a.edit {
+	background: transparent url("/images/icons/bubble_edit.png") no-repeat;
+
+}
+
+#bubbles .control a.delete {
+	background: transparent url("/images/icons/bubble_delete.png") no-repeat;
+}
+
+#bubbles .control a.favorite {
+	background: transparent url("/images/icons/heart.png") no-repeat;
+}
+
+.bubble span {
+	display: block;
+	cursor: pointer;
+}
+.control {
+	visibility: hidden;
+	float: left;
+	margin: 0 10px 0 0;
+}
+.bubbled {
+	background: #5a7db1;
+	color: #e0e0e0;
+}
