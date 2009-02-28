@@ -3,7 +3,8 @@
   %head
     %meta{ :content => "text/html;charset=UTF-8", "http-equiv" => "content-type" }
     = yield :head
-    = javascript_include_tag :defaults
+    = javascript_include_tag :defaults, 'jquery-corners'
+    = stylesheet_link_tag 'default'
     %title
       = t('site.title')
   %body

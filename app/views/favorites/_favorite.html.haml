@@ -10,7 +10,7 @@
         =h favorite.description
     %li
       %strong Url:
-      =link_to favorite.url
+      =favorite_link_to(favorite)
     %li
       %strong State:
       = favorite_state(favorite.state)

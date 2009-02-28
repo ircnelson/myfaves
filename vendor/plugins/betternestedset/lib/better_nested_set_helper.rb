@@ -93,7 +93,7 @@ module SymetrieCom
       #    If no block passed, uses {|item| "#{'··' * item.level}#{item[text_column]}"}
       def nested_set_options_for_select(class_or_item, options=nil)
         # find class
-        if class_or_item.is_a? Class
+        if class_or_item.is_a?(Class) || class_or_item.is_a?(Array)
           first_item = class_or_item.roots
         else
           first_item = class_or_item

@@ -1,8 +1,15 @@
+- content_for(:head) do
+  = stylesheet_link_tag 'bubble'
+
 %h2 Listing sections
 - if !@sections.empty?
-  .sections
-    = render :partial => "section", :collection => @sections
+  #sections
+    #bubbles
+      = bubbles_display(@sections)
   = will_paginate(@sections)
 - else
   %p There are no sections to show yet.
+%hr.clear
 = link_to 'New section', new_section_path
+
+%hr.clear

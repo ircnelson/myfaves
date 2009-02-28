@@ -1,9 +1,9 @@
-- content_tag_for :div, section do
-  %ul
-    %li
-      %strong Name:
-      =h section.name
-    = link_to 'Favorites', section_favorites_path(section)
+- content_tag_for(:div, section, :class => 'bubble') do
+  - content_tag(:div, :level => section.level, :id => "ctrl_#{section.id}", :class => 'control') do
+    = favorite_link(section, nil, :class => 'favorite')
     - unless section.root?
-      = link_to 'Edit', edit_section_path(section)
-      = link_to 'Destroy', section, :confirm => 'Are you sure?', :method => :delete
+      = favorite_link(section, nil, :class => 'edit')
+      = favorite_link(section, nil, :class => 'delete')
+      
+  %span
+  = section.name.capitalize

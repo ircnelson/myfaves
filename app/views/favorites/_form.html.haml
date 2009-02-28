@@ -21,6 +21,6 @@
   %p
     = f.label :section_id
     %br/
-    = f.select :section_id, current_user.sections.collect { |s| [s.name, s.id] }
+    = f.select :section_id, nested_set_options_for_select(current_user.sections), :include_blank => true
   %p
     = f.submit "Submit"

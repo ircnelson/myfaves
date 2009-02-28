@@ -16,6 +16,7 @@ module ApplicationHelper
 	def page_span(text, options = {})
 		content_tag :span, text, options
 	end
+	
 	def logged_in(&block)
 		concat content_tag(:div, capture(&block)) if logged_in?
 	end
@@ -26,6 +27,22 @@ module ApplicationHelper
 		link_to(name, url)
 	end
 	
+	def favorite_link(object, name = nil, options = {})
+		case options[:class]
+			when 'favorite'
+				favorite_count = object.favorites.count unless object.blank?
+				favorite_pluralize = pluralize(favorite_count, "Favorite") unless favorite_count.blank?
+				name ||= favorite_pluralize
+				link_to(name, section_favorites_path(object), :class => 'favorite', :title => name)
+			when 'edit'
+				name ||= 'Edit'
+				link_to(name, edit_section_path(object), :class => 'edit', :title => name)
+			when 'delete'
+				name ||= 'Delete'
+				link_to(name, section_path(object), :class => 'delete', :title => name, :confirm => 'Are you sure?', :method => :delete)
+		end
+	end
+	
 	def favorite_state(state)
 		case state
 			when true:
@@ -34,4 +51,16 @@ module ApplicationHelper
 				"hidden"
 		end
 	end
+	
+	def bubbles_display(collection, parent_id = nil, &block)
+		return nil if collection.blank?
+		li = ''
+		collection.collect do |item|
+			next if item.parent_id != parent_id
+			li += render(:partial => "section", :locals => { :section => item })
+			li += bubbles_display(item.all_children, item.id) unless item.children.blank?
+		end
+		li
+	end
+	
 end
