@@ -9,15 +9,6 @@ body {
 	line-height: 160%;
 }
 
-h3 {
-	padding: 4px;
-	margin: 2px 0 0 0;
-}
-h3 a {
-	margin-left: 10px;
-	text-decoration: none;
-}
-
 a.rounded, .button {
   outline: none;
   border: none;
@@ -51,5 +42,23 @@ a.rounded:hover {
 }
 
 #toolbar {
+	width: 90%;
+	margin: 0 auto 10px auto;
 	padding: 10px;
+	color: #2579ba;
+	text-transform: capitalize;
+	background: #c7cdca;
+}
+
+#toolbar span {
+	font-weight: bold;
+}
+
+#toolbar a {
+	color: #2579ba;
+	text-decoration: none;
+}
+
+#toolbar a:hover {
+	text-decoration: underline;
 }

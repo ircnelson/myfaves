@@ -10,11 +10,10 @@ jQuery.expr[':'].regex = function(elem, index, match) {
 }
 $(document).ready(function() {
 	$('.accordion').accordion({
-		header: "h3",
-		icons: { 'header': 'ui-icon-plus', 'headerSelected': 'ui-icon-minus' },
-		autoHeight: true
+		header: "h3"
 	});
 	$('.accordion h3').css({cursor: 'pointer'});
+	$("#toolbar").corners("bottom");
 	$('.bubble')
 		.corners()
 		.mouseover(function(e) {
