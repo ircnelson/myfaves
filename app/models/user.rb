@@ -8,7 +8,7 @@ class User < ActiveRecord::Base
 	
 	def create_faves_root
 		if self.sections.blank?
-			sections.create(:name => "faves")
+			sections.create(:name => "main")
 		end
 	end
 end

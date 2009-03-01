@@ -9,6 +9,36 @@ body {
 	line-height: 160%;
 }
 
+h1 {
+	color: #2579ba;
+	border-bottom: 2px solid #c7cdca;
+	margin: 25px 5px 10px 5px;
+}
+
+h2 {
+	font-size: larger;
+	margin: 8px 4px;
+	background: #2579ba;
+	padding: 8px;
+}
+
+h2 em {
+	font-size: small;
+	font-style: normal;
+	float: right;
+}
+
+h2 a {
+	display: block;
+	color: #fff;
+	background: #2579ba;
+}
+
+.box {
+	width: 300px;
+	float: left;
+}
+
 a.rounded, .button {
   outline: none;
   border: none;

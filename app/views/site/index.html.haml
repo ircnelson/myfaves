@@ -2,6 +2,9 @@
 
 .accordion
   - @favorites.group_by(&:section).sort.each do |section, @favorites|
-    %h3= link_to section.name, section
-    - div_for(section) do  
-      = render :partial => "sections/favorites"
+    .box
+      %h2
+        %em= section.ancestors.last.name
+        = link_to section.name, section
+      - div_for(section) do  
+        = render :partial => "sections/favorites"
