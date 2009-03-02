@@ -2,7 +2,8 @@ class UsersController < ApplicationController
 
 	before_filter :find_user, :only => [:show]
 	before_filter :find_current_user => [:edit, :update]
-	before_filter :login_required, :only => [:edit, :update, :destroy]
+	#before_filter :login_required, :only => [:edit, :update, :destroy]
+	skip_before_filter :login_required, :only => [:login, :new, :create]
 
 	def show
 	end

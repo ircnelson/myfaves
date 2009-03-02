@@ -1,6 +1,5 @@
 class SectionsController < ApplicationController
 
-	before_filter :login_required
   before_filter :find_section
 
   def create

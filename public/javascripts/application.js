@@ -9,7 +9,7 @@ jQuery.expr[':'].regex = function(elem, index, match) {
 	return regex.test(jQuery(elem)[attr.method](attr.property));
 }
 $(document).ready(function() {
-//	$('.accordion').accordion({ header: "h2" });
+	//$('.accordion').accordion({ header: "h2" });
 	$('.accordion h2').css({cursor: 'pointer'});
 	$("#toolbar").corners("bottom");
 	$('.bubble')
