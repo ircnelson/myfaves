@@ -1,9 +1,9 @@
 - content_tag_for(:div, section, :class => 'bubble', :level => section.level) do
-  - content_tag(:div, :id => "ctrl_#{section.id}", :class => 'control') do
+  - content_tag(:div, :id => "control_#{section.id}", :class => 'control') do
     = favorite_link(section, nil, :class => 'favorite')
     = favorite_link(section, nil, :class => 'new_favorite')
     - unless section.root?
       = favorite_link(section, nil, :class => 'edit')
       = favorite_link(section, nil, :class => 'delete')
-
-  = section.name.capitalize
+  
+  = link_to section.name.capitalize, section

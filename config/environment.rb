@@ -48,3 +48,7 @@ Rails::Initializer.run do |config|
 end
 
 require 'will_paginate'
+ActionView::Helpers::AssetTagHelper.register_javascript_expansion :jcrop => ["jCrop/jquery.Jcrop.pack"],
+																																	:in_place_editing => ["in_place_editing/jquery.inplace.pack"]
+
+ActionView::Helpers::AssetTagHelper.register_stylesheet_expansion :jcrop => ["jCrop/jquery.Jcrop"]

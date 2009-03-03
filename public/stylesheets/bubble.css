@@ -10,6 +10,11 @@ hr.clear {
 	clear: both;
 	font-size: 14px;
 }
+
+#bubbles {
+	margin: 0 4px;
+}
+
 #bubbles .control a {
 	display: block;
 	float: left;
@@ -17,7 +22,7 @@ hr.clear {
 	margin: 0 4px;
 	color: #fff;
 	text-decoration: none;
-	background: #7f8ca0;
+	background: #ccd0dc;
 	padding: 0 2px 0 0;
 	border: 1px solid #fff;
 }
@@ -60,6 +65,6 @@ hr.clear {
 	margin: 0 10px 0 0;
 }
 .bubbled {
-	background: #5a7db1;
-	color: #e0e0e0;
+	background: #ccd0dc;
+	color: #3361d7;
 }

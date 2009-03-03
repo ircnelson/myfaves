@@ -1,0 +1,20 @@
+form {
+	margin: 2px 2px;
+}
+
+form p {
+	clear: both;
+}
+
+form p.field input, select, textarea {
+	padding: 4px;
+}
+
+form p.field input:focus, form p.field textarea:focus {
+	border: 2px solid #3361d7;
+}
+
+form label {
+	font-family: 'sans-serif';
+	font-weight: bold;
+}

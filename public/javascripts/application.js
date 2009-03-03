@@ -10,7 +10,7 @@ jQuery.expr[':'].regex = function(elem, index, match) {
 }
 $(document).ready(function() {
 	//$('.accordion').accordion({ header: "h2" });
-	$('.accordion h2').css({cursor: 'pointer'});
+	//$('.accordion h2').css({cursor: 'pointer'});
 	$("#toolbar").corners("bottom");
 	$('.bubble')
 		.corners()
@@ -19,12 +19,12 @@ $(document).ready(function() {
 			bubble = bubble.is('.bubble') ? bubble : bubble.parent();
 			bubble = bubble.is('.control') ? bubble.parent() : bubble;
 			bubble.addClass("bubbled");
-			$("#ctrl_" + bubble.attr("id").split("_")[1]).css({visibility: "visible"})
+			$("#control_" + bubble.attr("id").split("_")[1]).css({visibility: "visible"})
 		})
 		.mouseout(function(e) {
 			var bubble = $(e.target);
 			bubble = bubble.is('.bubble') ? bubble : bubble.parent();
-			bubble.removeClass('bubbled');
+			$(":hasClass('bubbled')").removeClass('bubbled');
 			$('.control').css({visibility: "hidden"});
 		});
 	$(':regex(level, ^[0-9])').map(function(count, el) {

@@ -2,18 +2,21 @@
 %html{ "xml:lang" => "en", :lang => "en", :xmlns => "http://www.w3.org/1999/xhtml" }
   %head
     %meta{ :content => "text/html;charset=UTF-8", "http-equiv" => "content-type" }
-    = yield :head
     = javascript_include_tag :defaults, 'jquery-corners'
     = stylesheet_link_tag 'default'
+    = yield :head
     %title
       = t('site.title')
   %body
     #toolbar
-      = page_link_or_span "home", site_path
-      = page_link_or_span 'sections', sections_path
-      = yield :toolbar
-      = page_link_or_span "logout", logout_path if logged_in?
-      = page_link_or_span "login", login_path unless logged_in?
+      - if logged_in?
+        = page_link_or_span 'home', root_path
+        = page_link_or_span 'sections', sections_path
+        = yield :toolbar
+        = page_link_or_span 'profile', user_path(current_user) if logged_in?
+        = page_link_or_span 'logout', logout_path if logged_in?
+      - else
+        = page_link_or_span 'login', login_path
     - unless flash.blank?
       #flash_message
         = flash.map { |name, message| content_tag(:p, message, :class => name) }

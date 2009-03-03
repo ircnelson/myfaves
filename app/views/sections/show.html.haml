@@ -1,12 +1,10 @@
-%h2
-  = nested_set_full_outline(@section, :controller => 'sections')
-  - unless @section.root?
-    %small= "(#{link_to 'Edit', edit_section_path(@section)})"
+- content_tag(:head) do
+  = javascript_include_tag :in_place_editing
+
+%h3= nested_set_full_outline(@section, :controller => 'sections') { |section| (section.root? || [@section].last.id != section.id ? link_to(section.name.capitalize, section) : in_place_editor_field(section, :name)) }
+
 %p= link_to 'Add Favorite', new_section_favorite_path(@section)
-- content_tag_for :div, @section do
-  %ul
-    %li
-      %strong Name:
-      =h @section.name
-  %h4 Favorites
-  = render :partial => 'favorites/favorite', :collection => @section.favorites
+- unless @section.favorites.blank?
+  - content_tag_for :div, @section do
+    %h4 Favorites
+    = render :partial => 'favorites/favorite', :collection => @section.favorites

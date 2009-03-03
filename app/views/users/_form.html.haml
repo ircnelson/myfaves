@@ -1,18 +1,25 @@
-- form_for(@user) do |u|
+- content_for(:head) do
+  = stylesheet_link_tag 'forms'
+
+- form_for(@user, :html => { :multipart => true }) do |u|
   = u.error_messages
-  %p
-    = u.label :name
-    %br/
-    = u.text_field :name
-  %p
-    = u.label :email
-    %br/
-    = u.text_field :email
-  - if @user.new_record?
-    %p
-      = u.label :password
+  - field_set_tag 'Personal Info' do
+    %p.field
+      = u.label :email
       %br/
-      = u.password_field :password
-      = u.password_field :password_confirmation
+      = u.text_field :email
+    - if @user.new_record?
+      %p.field
+        = u.label :password
+        %br/
+        = u.password_field :password
+        = u.password_field :password_confirmation
+  - field_set_tag 'Your Avatar' do
+    %p.field
+      = image_tag(@user.avatar.url(:small))
+      %br/
+      = u.label :avatar, 'Choose your image:'
+      = u.file_field :avatar
+  
   %p
     = u.submit btn_submit

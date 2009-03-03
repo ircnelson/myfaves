@@ -1,6 +1,8 @@
 class SectionsController < ApplicationController
 
   before_filter :find_section
+  
+  in_place_edit_for :section, :name
 
   def create
     @section = @user.sections.build(params[:section])

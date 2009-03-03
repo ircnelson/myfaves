@@ -21,10 +21,11 @@ module ApplicationHelper
 		concat content_tag(:div, capture(&block)) if logged_in?
 	end
 	
-	def favorite_link_to(object)
+	def favorite_link_to(object, html_options = {})
 		name = (object.name.blank? ? truncate(object.url, 30) : object.name).gsub("www\.", '').gsub("http://", '')
 		url ||= object.url
-		link_to(name, url)
+		html_options[:title] ||= object.description
+		link_to(name, url, html_options)
 	end
 	
 	def favorite_link(object, name = nil, options = {})
@@ -33,7 +34,7 @@ module ApplicationHelper
 				favorite_count = object.favorites.count unless object.blank?
 				favorite_pluralize = pluralize(favorite_count, "Favorite") unless favorite_count.blank?
 				name ||= favorite_pluralize
-				link_to(name, section_favorites_path(object), :class => 'favorite', :title => name)
+				link_to(name, section_path(object), :class => 'favorite', :title => name)
 			when 'new_favorite'
 				name ||= 'Add Favorite'
 				link_to(name, new_section_favorite_path(object), :class => 'new_favorite', :title => name)

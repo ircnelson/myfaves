@@ -4,7 +4,8 @@
   - @favorites.group_by(&:section).sort.each do |section, @favorites|
     .box
       %h2
-        %em= section.ancestors.last.name
+        - unless section.ancestors.last.root?
+          %em= section.ancestors.last.name
         = link_to section.name, section
       - div_for(section) do  
         = render :partial => "sections/favorites"

@@ -1,0 +1,23 @@
+- content_for :head do
+  = javascript_include_tag :jcrop
+  = stylesheet_link_tag :jcrop
+  - javascript_tag do
+    = showPreviewJs
+
+%p
+  %b Your avatar
+  = image_tag @user.avatar.url(:normal), :id => 'cropbox'
+  %div{ :style => "width:#{User::AVATAR_SW}px;height:#{User::AVATAR_SH}px;overflow:hidden;" }
+    = image_tag @user.avatar.url(:normal), :id => 'preview'
+
+- form_for :user, :url => crop_user_path(@user) do |f|
+  = f.text_field :crop_x, :id => 'crop_x'
+  %br/
+  = f.text_field :crop_y, :id => 'crop_y'
+  %br/
+  = f.text_field :crop_w, :id => 'crop_w'
+  %br/
+  = f.text_field :crop_h, :id => 'crop_h'
+  %br/
+  = f.submit "Crop!"
+  = link_to 'cancel', edit_user_path(@user)

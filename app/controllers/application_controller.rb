@@ -17,8 +17,8 @@ class ApplicationController < ActionController::Base
 			end
 		end
 		
-		def redirect_with_flash(url, flash_message = {})
-			url ||= site_path
+		def redirect_with_flash(url = nil, flash_message = {})
+			url ||= root_path
 			redirect_to url
 			flash_message
 		end
