@@ -1,3 +1,6 @@
+- content_for(:head) do
+  = stylesheet_link_tag 'forms'
+
 - form_tag login_path, :method => :post do
   %dl
     %dt= label_tag 'login'
