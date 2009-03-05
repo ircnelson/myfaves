@@ -43,7 +43,7 @@ class User < ActiveRecord::Base
 			sections.create(:name => "All")
 		end
 	end
-	
+=begin
 	acts_as_state_machine :initial => :step_one
 	state :step_one
 	state :step_two
@@ -65,4 +65,5 @@ class User < ActiveRecord::Base
   event :finish do
   	transitions :from => [:step_one, :step_two, :step_three], :to => :finished
   end
+=end
 end
