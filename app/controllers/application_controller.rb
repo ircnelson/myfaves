@@ -3,13 +3,10 @@
 
 class ApplicationController < ActionController::Base
 	include AuthSystem
-  helper :all # include all helpers, all the time
-  protect_from_forgery # See ActionController::RequestForgeryProtection for details
+  helper :all
+  protect_from_forgery
 
 	before_filter :login_required
-
-  # Scrub sensitive parameters from your log
-  # filter_parameter_logging :password
   protected
 		def login_required
 			unless logged_in?
@@ -22,4 +19,5 @@ class ApplicationController < ActionController::Base
 			redirect_to url
 			flash_message
 		end
+	
 end

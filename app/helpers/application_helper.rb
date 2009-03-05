@@ -3,20 +3,12 @@ module ApplicationHelper
 	def page_link_or_span(text, page = nil, options = {})
 		page ||= "/"
 	  if page && !current_page?(page)
-      page_link page, text, options
+      link_to text, url_for(page), options
 		else
-		  page_span text, options
+		  content_tag :span, text, options
     end
 	end
 
-	def page_link(page, text, options = {})
-		link_to text, url_for(page), options
-	end
-
-	def page_span(text, options = {})
-		content_tag :span, text, options
-	end
-	
 	def logged_in(&block)
 		concat content_tag(:div, capture(&block)) if logged_in?
 	end

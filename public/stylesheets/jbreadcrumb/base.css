@@ -1,7 +1,33 @@
+/* Float Clearing
+ ---------------------------------------------------------------------*/
+
+.module:after
+{
+	clear: both;
+	content: ".";
+	display: block;
+	height: 0;
+	visibility: hidden;
+}
+
+/* float clearing for IE6 */
+* html .module
+{
+	height: 1%;
+	overflow: visible;
+}
+
+/* float clearing for IE7 */
+* + html .module
+{
+	min-height: 1%;
+}
+
+
+/* General Typography
+ ---------------------------------------------------------------------*/
 html, body
 {
-	margin:0;
-	padding:0;
 	font-size: 12px;
 	line-height: 21px;
 	color: #444;
@@ -180,61 +206,25 @@ pre
 	padding:10px;
 	color:#111;
 }
-
-a.rounded, .button {
-  outline: none;
-  border: none;
-  text-decoration: none;
-  cursor: pointer;
-  white-space: nowrap;
-  vertical-align: middle; /* or top */
-  display: -moz-inline-box;
-  display: inline-block;
-  overflow: visible; /* IE6 form button fix */
-  padding: 2px 4px;
-  margin: 2px 0;
-  border: 1px solid #e09;
-  color: #333;
-  background: #fe8;
-  font-size: 12px;
+.description
+{
+	float:left;
+	width:700px;
+	margin-right:20px;
+}
+.sideBar
+{
+	float:left;
+	background:#fff;
+	border:solid 1px #dedede;
+	padding:20px;
+	width:238px;
+	margin:50px 0 0 0;
+}
+.license p
+{
+	font-size:0.83333em;
+	color:#888;
 }
 
-a.rounded:hover {
-	background: #5a7db1;
-	color: #eef;
-}
 
-.button {
-  color: #000;
-  background-color: #acc;
-  padding: 5px 7px;
-}
-.button:hover {
-  background-color: #cee;
-}
-
-#toolbar {
-	width: 90%;
-	margin: 0 auto 10px auto;
-	padding: 10px;
-	color: #2579ba;
-	text-transform: capitalize;
-	background: #c7cdca;
-}
-
-#toolbar span {
-	font-weight: bold;
-}
-
-#toolbar a {
-	color: #2579ba;
-	text-decoration: none;
-}
-
-#toolbar a:hover {
-	text-decoration: underline;
-}
-
-#container {
-	margin: 0 4px;
-}

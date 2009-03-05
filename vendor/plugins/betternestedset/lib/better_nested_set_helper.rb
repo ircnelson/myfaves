@@ -49,7 +49,7 @@ module SymetrieCom
         options = {
           :text_column => options[:text_column] || item.acts_as_nested_set_options[:text_column],
           :action => options[:action] || :show,
-          :controller => options[:controller] || item.class.to_s.underscore,
+          :controller => options[:controller] || item.class.to_s.constantize,
           :separator => options[:separator] || ' &gt; ' }
         
         s = ''
@@ -66,6 +66,30 @@ module SymetrieCom
           s + h(item[options[:text_column]])
         end
       end
+      
+      def nested_set_breadcrumb(item, options = {})
+	      options = {
+	        :text_column => options[:text_column] || item.acts_as_nested_set_options[:text_column],
+          :action => options[:action] || :show,
+          :controller => options[:controller] || item.class.to_s.underscore }
+      	ul = ''
+      	self_and_ancestors = item.self_and_ancestors
+      	size = self_and_ancestors.count
+      	self_and_ancestors.to_enum(:each_with_index).collect do |i, index|
+      		if block_given?
+      			ul << yield(i)
+      		else
+      			value = i[item.acts_as_nested_set_options[:text_column]].capitalize
+      			if size > 1 && size - 1 == index
+							li = content_tag(:strong, value)
+      			else
+		      		li = link_to(value, { :controller => options[:controller], :action => options[:action], :id => i })
+  					end	    		
+		      	ul << content_tag(:li, li)
+					end
+      	end
+      	content_tag(:div, content_tag(:div, content_tag(:ul, ul), { :class => 'breadCrumb module', :id => 'breadCrumb' }), { :class => 'breadCrumbHolder module' })
+	    end
   
       # Returns options for select.
       # You can exclude some items from the tree.
@@ -120,7 +144,7 @@ module SymetrieCom
         else  
           tree.map{|item| [ "#{'··' * item.level}#{item[text_column]}", item.id]}
         end
-      end  
+      end    
     end
   end  
 end

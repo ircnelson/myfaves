@@ -1,7 +1,11 @@
-- content_tag(:head) do
-  = javascript_include_tag :in_place_editing
+- content_for(:head) do
+  = javascript_include_tag :in_place_editing, 'jbreadcrumb/jbreadcrumb', 'jbreadcrumb/easing'
+  = stylesheet_link_tag 'jbreadcrumb/base', 'jbreadcrumb/breadcrumb'
 
-%h3= nested_set_full_outline(@section, :controller => 'sections') { |section| (section.root? || [@section].last.id != section.id ? link_to(section.name.capitalize, section) : in_place_editor_field(section, :name)) }
+= nested_set_breadcrumb(@section, :controller => 'sections', :in_place_editing => true)
+
+- javascript_tag do
+  $("#breadCrumb").jBreadCrumb({easing:'swing'});
 
 %p= link_to 'Add Favorite', new_section_favorite_path(@section)
 - unless @section.favorites.blank?

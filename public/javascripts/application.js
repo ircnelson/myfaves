@@ -8,6 +8,7 @@ jQuery.expr[':'].regex = function(elem, index, match) {
 	regexFlags = 'ig', regex = new RegExp(matchParams.join('').replace(/^\s+|\s+$/g,''), regexFlags);
 	return regex.test(jQuery(elem)[attr.method](attr.property));
 }
+
 $(document).ready(function() {
 	//$('.accordion').accordion({ header: "h2" });
 	//$('.accordion h2').css({cursor: 'pointer'});
